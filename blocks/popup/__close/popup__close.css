@@ -1,0 +1,16 @@
+.popup__close {
+    width: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.popup__close:hover {
+    opacity: 0.6;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 767px) {
+    .popup__close {
+        width: 26px;
+    }
+}

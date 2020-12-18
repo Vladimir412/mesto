@@ -1,0 +1,12 @@
+.element__info {
+    margin: 25px 15px 20px 21px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+@media screen and (min-device-width: 320px) and (max-device-width: 767px) {
+    .element__info {
+        min-width: 246px;
+    }
+}

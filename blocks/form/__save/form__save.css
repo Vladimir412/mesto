@@ -1,0 +1,15 @@
+.form__save {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 767px) {
+  .form__save {
+    max-width: 238px;
+  }
+}

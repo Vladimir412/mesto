@@ -1,0 +1,10 @@
+.form__desk {
+  width: 358px;
+  height: 50px;
+  padding: 0;
+  margin: auto;
+  border: none;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,63 @@
+@import url(../vender/normalize.css);
+@import url(../fonts/font.css);
+
+@import url(../blocks/page/page.css);
+
+/*  logo  */
+
+@import url(../blocks/logo/logo.css);
+
+/*  button  */
+
+@import url(../blocks/buttons/button-edit/button-edit.css);
+@import url(../blocks/buttons/button-plus/button-plus.css);
+
+/*  header  */
+
+@import url(../blocks/header/header.css);
+@import url();
+
+/*  overlay  */
+
+@import url(../blocks/overlay/overlay.css);
+@import url(../blocks/overlay/_open/overlay_open.css);
+
+/*  popup  */
+
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__close/popup__close.css);
+
+/*  form  */
+
+@import url(../blocks/form/form.css);
+@import url(../blocks/form/__desk/form__desk.css);
+@import url(../blocks/form/__title/form__title.css);
+@import url(../blocks/form/__name/form__name.css);
+@import url(../blocks/form/__work/form__work.css);
+@import url(../blocks/form/__button/form__button.css);
+@import url(../blocks/form/__save/form__save.css);
+
+/*  profile  */
+
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__jacques-cousteau/profile__jacques-cousteau.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__title/profile__title.css);
+@import url(../blocks/profile/__subtitle/profile__subtitle.css);
+
+/*  elements  */
+
+@import url(../blocks/elements/elements.css);
+
+/*  element  */
+
+@import url(../blocks/element/element.css);
+@import url(../blocks/element/__photo/element__photo.css);
+@import url(../blocks/element/__info/element__info.css);
+@import url(../blocks/element/__title/element__title.css);
+@import url(../blocks/element/__like/element__like.css);
+
+/*  footer  */
+
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);

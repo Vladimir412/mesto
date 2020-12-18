@@ -1,0 +1,16 @@
+.page {
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+  /* max-width: 1280px; */
+  background-color: #000000;
+  padding-top: 45px;
+  padding-bottom: 60px;
+  position: relative;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 767px) {
+  .page {
+    padding-top: 28px;
+    padding-bottom: 36px;
+  }
+}
