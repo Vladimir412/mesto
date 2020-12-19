@@ -21,5 +21,8 @@
     grid-row: 1/2;
     margin-top: 33px;
     margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
   }
 }

@@ -7,6 +7,10 @@ let workProile = document.querySelector('.profile__subtitle');
 let namePopup = document.querySelector('.form__name');
 let workPopup = document.querySelector('.form__work');
 let form = document.querySelector('.form__desk');
+let likeBtn = document.querySelectorAll('.element__button');
+let like =  document.querySelectorAll('.element__like');
+console.log(like)
+
 
 let togglePopup = function () {
 overlay.classList.toggle('overlay_open');
@@ -36,5 +40,8 @@ overlay.addEventListener('click', function(event) {
  
 closeBtn.addEventListener('click', togglePopup);
 
-let like = document.querySelectorAll('.element__like');
-
+let clickBtn = function () {
+    for (let i = 0; i <= likeBtn.length - 1; i++) {
+        console.log(likeBtn[i])
+    }
+}

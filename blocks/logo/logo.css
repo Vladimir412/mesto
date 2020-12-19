@@ -1,4 +1,11 @@
 .logo {
-    width: 100%;
-    max-width: 142px;
+  width: 100%;
+  max-width: 142px;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 767px) {
+  .logo {
+    width: 32.1%;
+    padding-left: 27px;
+  }
 }

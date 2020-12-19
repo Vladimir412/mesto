@@ -8,4 +8,5 @@
   display: none;
   justify-content: center;
   padding: 155px 400px 150px 439px;
+  z-index: 1;
 }
