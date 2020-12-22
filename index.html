@@ -14,21 +14,6 @@
       <img class="logo" src="./images/logo/Vector.svg" alt="">
     </header>
     <main>
-      <div class="overlay">
-        <div class="popup">
-          <img class="popup__close" src="./images/logo/close.svg" alt="">
-          <div class="form">
-            <h2 class="form__title">Редактировать профиль</h2>
-            <form class="form__desk">
-              <input class="form__name" type="text">
-              <input class="form__work" type="text">
-              <button class="form__button" type="submit">
-                <p class="form__save">Сохранить</p>
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
       <div class="profile">
         <img class="profile__jacques-cousteau" src="./images/jacques-cousteau.png" alt="Фото Жак-Ив Кусто">
         <div class="profile__info">
@@ -43,42 +28,42 @@
           <img class="element__photo" src="./images/image6.png" alt="">
           <div class="element__info">
             <h2 class="element__title">Карачаевск</h2>
-            <button class="element__button"><img class="element__like" src="./images/logo/like.svg" alt=""></button>
+            <button class="element__button" type="button"><img class="element__like element__like_active" src="./images/logo/like.svg" alt=""><img class="element__like-black" src="./images/logo/likeBlack.svg" alt=""></button>
           </div>
         </article>
         <article class="element">
           <img class="element__photo" src="./images/image2.png" alt="">
           <div class="element__info">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__button"><img class="element__like" src="./images/logo/like.svg" alt=""></button>
+            <button class="element__button"><img class="element__like element__like_active" src="./images/logo/like.svg" alt=""><img class="element__like-black" src="./images/logo/likeBlack.svg" alt=""></button>
           </div>
         </article>
         <article class="element">
           <img class="element__photo" src="./images/image3.png" alt="">
           <div class="element__info">
             <h2 class="element__title">Домбай</h2>
-            <button class="element__button"><img class="element__like" src="./images/logo/like.svg" alt=""></button>
+            <button class="element__button"><img class="element__like element__like_active" src="./images/logo/like.svg" alt=""><img class="element__like-black" src="./images/logo/likeBlack.svg" alt=""></button>
           </div>
         </article>
         <article class="element">
           <img class="element__photo" src="./images/image4.png" alt="">
           <div class="element__info">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__button"><img class="element__like" src="./images/logo/like.svg" alt=""></button>
+            <button class="element__button"><img class="element__like element__like_active" src="./images/logo/like.svg" alt=""><img class="element__like-black" src="./images/logo/likeBlack.svg" alt=""></button>
           </div>
         </article>
         <article class="element">
           <img class="element__photo" src="./images/image5.png" alt="">
           <div class="element__info">
             <h2 class="element__title">Домбай</h2>
-            <button class="element__button"><img class="element__like" src="./images/logo/like.svg" alt=""></button>
+            <button class="element__button"><img class="element__like element__like_active" src="./images/logo/like.svg" alt=""><img class="element__like-black" src="./images/logo/likeBlack.svg" alt=""></button>
           </div>
         </article>
         <article class="element">
           <img class="element__photo" src="./images/image6.png" alt="">
           <div class="element__info">
             <h2 class="element__title">Карачаево-Черкесия</h2>
-            <button class="element__button"><img class="element__like" src="./images/logo/like.svg" alt=""></button>
+            <button class="element__button"><img class="element__like element__like_active" src="./images/logo/like.svg" alt=""><img class="element__like-black" src="./images/logo/likeBlack.svg" alt=""></button>
           </div>
         </article>
       </div>
@@ -86,6 +71,21 @@
     <footer class="footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
+  </div>
+  <div class="popup">
+    <div class="popup__container">
+      <img class="popup__close" src="./images/logo/close.svg" alt="">
+      <div class="form">
+        <h2 class="form__title">Редактировать профиль</h2>
+        <form class="form__desk">
+          <input class="form__name" type="text">
+          <input class="form__work" type="text">
+          <button class="form__button" type="submit">Сохранить
+            <!-- <p class="form__save">Сохранить</p> -->
+          </button>
+        </form>
+      </div>
+    </div>
   </div>
   <script src="./script/index.js"></script>
 </body>

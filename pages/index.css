@@ -17,14 +17,10 @@
 @import url(../blocks/header/header.css);
 @import url();
 
-/*  overlay  */
-
-@import url(../blocks/overlay/overlay.css);
-@import url(../blocks/overlay/_open/overlay_open.css);
-
 /*  popup  */
 
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__open/popup__open.css);
 @import url(../blocks/popup/__close/popup__close.css);
 
 /*  form  */
@@ -57,6 +53,8 @@
 @import url(../blocks/element/__title/element__title.css);
 @import url(../blocks/element/__button/element__button.css);
 @import url(../blocks/element/__like/element__like.css);
+@import url(../blocks/element/__like-black/element__like-black.css);
+@import url(../blocks/element/__like/_active/element__like_active.css);
 
 /*  footer  */
 
