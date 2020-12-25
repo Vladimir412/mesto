@@ -31,7 +31,7 @@ form.addEventListener('submit', handleFormSubmit)
 popup.addEventListener('click', function(event) {
     if (event.target === event.currentTarget) {
         togglePopup();
-    } else if (event.target === popup) {
+    } else if (event.target === popupCont) {
         togglePopup();
     }
 })
