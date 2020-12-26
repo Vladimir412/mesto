@@ -1,3 +1,5 @@
 .element__like {
-    display: none;
+  display: none;
+  width: 22px;
+  max-height: 19px;
 }

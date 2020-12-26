@@ -1,7 +1,6 @@
 .form__desk {
-  width: 358px;
-  height: 194px;
-  /* padding-bottom: 21px; */
+  max-width: 358px;
+  max-height: 194px;
   margin: 0 auto 10px;
   border: none;
   outline: none;

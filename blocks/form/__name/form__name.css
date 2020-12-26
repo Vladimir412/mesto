@@ -1,6 +1,7 @@
 .form__name {
-  margin-bottom: 24px;
-  height: 30px;
+  margin-bottom: 22px;
+  padding: 0;
+  min-height: 32px;
   outline: none;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -10,10 +11,13 @@
   font-size: 14px;
   line-height: 17px;
   color: #000000;
+
 }
 
 @media screen and (min-device-width: 320px) and (max-device-width: 767px) {
   .form__name {
-    max-width: 238px;
+    width: 95%;
+    margin: 0 auto 22px;
+    min-height: 33px;
   }
 }

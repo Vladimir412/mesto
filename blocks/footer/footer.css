@@ -1,5 +1,4 @@
 .footer {
-    /* width: 100%; */
     max-width: 880px;
     margin: auto;
 }
@@ -19,6 +18,5 @@
 @media screen and (min-device-width: 320px) and (max-device-width: 767px) {
     .footer {
         width: 88.1%;
-        margin: auto;
     }
 }

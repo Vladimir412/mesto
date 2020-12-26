@@ -12,12 +12,12 @@ let form = document.querySelector('.form__desk');
 
 let togglePopup = function () {
 popup.classList.toggle('popup__open');
+namePopup.value = nameProfile.textContent;
+workPopup.value = workProile.textContent;
 }
 
 edit.addEventListener('click', togglePopup)
 
-namePopup.value = nameProfile.textContent;
-workPopup.value = workProile.textContent;
 
 function handleFormSubmit (evt) {
     evt.preventDefault();
