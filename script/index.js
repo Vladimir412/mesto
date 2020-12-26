@@ -6,7 +6,7 @@ let nameProfile = document.querySelector('.profile__title');
 let workProile = document.querySelector('.profile__subtitle');
 let namePopup = document.querySelector('.form__name');
 let workPopup = document.querySelector('.form__work');
-let form = document.querySelector('.form__desk');
+let form = document.querySelector('.form');
 
 
 
