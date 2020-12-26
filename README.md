@@ -4,4 +4,4 @@
 
 2. Использование JS
 
-[Проект] ( https://vladimir412.github.io/mesto/)
+[Проект]( https://vladimir412.github.io/mesto/)
