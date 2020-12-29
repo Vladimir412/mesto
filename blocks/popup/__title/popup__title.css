@@ -2,7 +2,6 @@
   width: 100%;
   max-width: 330px;
   margin: 34px auto 42px 36px;
-  /* text-align: center; */
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 900;
@@ -12,10 +11,10 @@
   color: #000000;
 }
 
-@media screen and (min-device-width: 320px) and (max-device-width: 767px) {
+@media screen and (min-width: 320px) and (max-width: 767px) {
   .popup__title {
-    width: 84.3%;
-    margin: 26px auto 67px;
+    width: 85%;
+    margin: 26px auto 68px;
     font-size: 18px;
     line-height: 22px;
   }

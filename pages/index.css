@@ -9,8 +9,9 @@
 
 /*  button  */
 
-@import url(../blocks/buttons/button-edit/button-edit.css);
-@import url(../blocks/buttons/button-plus/button-plus.css);
+@import url(../blocks/button/__edit/button__edit.css);
+@import url(../blocks/button/__plus/button__plus.css);
+@import url(../blocks/button/__close/button__close.css);
 
 /*  header  */
 
@@ -19,15 +20,15 @@
 /*  form  */
 
 @import url(../blocks/form/form.css);
+@import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__name/form__name.css);
 @import url(../blocks/form/__work/form__work.css);
 @import url(../blocks/form/__button/form__button.css);
-@import url(../blocks/form/__save/form__save.css);
 
 /*  profile  */
 
 @import url(../blocks/profile/profile.css);
-@import url(../blocks/profile/__jacques-cousteau/profile__jacques-cousteau.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__title/profile__title.css);
 @import url(../blocks/profile/__subtitle/profile__subtitle.css);

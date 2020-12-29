@@ -1,6 +1,5 @@
 .form {
   max-width: 358px;
-  max-height: 194px;
   margin: 0 auto 10px;
   border: none;
   outline: none;
@@ -8,7 +7,7 @@
   flex-direction: column;
 }
 
-@media screen and (min-device-width: 320px) and (max-device-width: 767px) {
+@media screen and (min-width: 320px) and (max-width: 767px) {
   .form {
     width: 88%;
   }

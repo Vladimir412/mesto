@@ -1,5 +1,5 @@
 let popup = document.querySelector('.popup');
-let edit = document.querySelector('.button-edit');
+let edit = document.querySelector('.button__edit');
 let popupCont = document.querySelector('.popup__container');
 let closeBtn = document.querySelector('.popup__close');
 let nameProfile = document.querySelector('.profile__title');
@@ -10,31 +10,27 @@ let form = document.querySelector('.form');
 
 
 
-let togglePopup = function () {
-popup.classList.toggle('popup__open');
-namePopup.value = nameProfile.textContent;
-workPopup.value = workProile.textContent;
+let openPopup = function () {
+    popup.classList.add('popup__open');
+    namePopup.value = nameProfile.textContent;
+    workPopup.value = workProile.textContent;
 }
 
-edit.addEventListener('click', togglePopup)
+let closePopup = function () {
+    popup.classList.remove('popup__open');
+}
+
+edit.addEventListener('click', openPopup);
 
 
 function handleFormSubmit (evt) {
     evt.preventDefault();
     nameProfile.textContent = namePopup.value;
     workProile.textContent = workPopup.value;
-    togglePopup()
+    closePopup();
 }
 
-form.addEventListener('submit', handleFormSubmit)
-
-popup.addEventListener('click', function(event) {
-    if (event.target === event.currentTarget) {
-        togglePopup();
-    } else if (event.target === popupCont) {
-        togglePopup();
-    }
-})
+form.addEventListener('submit', handleFormSubmit);
  
-closeBtn.addEventListener('click', togglePopup);
+closeBtn.addEventListener('click', closePopup);
 
