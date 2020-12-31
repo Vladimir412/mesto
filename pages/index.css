@@ -9,9 +9,9 @@
 
 /*  button  */
 
-@import url(../blocks/button/__edit/button__edit.css);
-@import url(../blocks/button/__plus/button__plus.css);
-@import url(../blocks/button/__close/button__close.css);
+@import url(../blocks/buttons/button-edit/button-edit.css);
+@import url(../blocks/buttons/button-plus/button-plus.css);
+@import url(../blocks/buttons/button-close/button-close.css);
 
 /*  header  */
 
