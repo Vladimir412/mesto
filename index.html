@@ -18,73 +18,115 @@
         <img class="profile__avatar " src="./images/jacques-cousteau.png" alt="аватар пользователя">
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <button class="button-edit" type="button"><img class="profile__edit" src="./images/logo/pen.svg" alt="Редактировать профиль"></button>
+          <button class="button-edit" type="button"><img class="profile__edit" src="./images/logo/pen.svg"
+              alt="Редактировать профиль"></button>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button class="button-plus" type="button"><img class="profile__plus" src="./images/logo/plus.svg" alt="Добавить карточку"></button>
+        <button class="button-plus" type="button"><img class="profile__plus" src="./images/logo/plus.svg"
+            alt="Добавить карточку"></button>
       </div>
       <div class="elements">
-        <article class="element">
+        <!-- <article class="element">
           <img class="element__photo" src="./images/image6.png" alt="Фото старого полуразрушенного здания">
           <div class="element__info">
             <h2 class="element__title">Карачаевск</h2>
-            <button class="element__button" type="button"><img class="element__like element__like_active" src="./images/logo/like.svg" alt="Иконка сердечка"></button>
+            <button class="element__button" type="button"><div class="element__like"></div></button>
           </div>
         </article>
         <article class="element">
           <img class="element__photo" src="./images/image2.png" alt="Пейзаж на гору Эльбрус издалека">
           <div class="element__info">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__button" type="button"><img class="element__like element__like_active" src="./images/logo/like.svg" alt="Иконка сердечка"></button>
+            <button class="element__button" type="button"><div class="element__like"></button>
           </div>
         </article>
         <article class="element">
           <img class="element__photo" src="./images/image3.png" alt="Фото гор и леса">
           <div class="element__info">
             <h2 class="element__title">Домбай</h2>
-            <button class="element__button" type="button"><img class="element__like element__like_active" src="./images/logo/like.svg" alt="Иконка сердечка"></button>
+            <button class="element__button" type="button"><div class="element__like"></button>
           </div>
         </article>
         <article class="element">
           <img class="element__photo" src="./images/image4.png" alt="Пейзаж на гору Эльбрус издалека">
           <div class="element__info">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__button" type="button"><img class="element__like element__like_active" src="./images/logo/like.svg" alt="Иконка сердечка"></button>
+            <button class="element__button" type="button"><img class="element__like" src="./images/logo/like.svg" alt="Иконка сердечка"></button>
           </div>
         </article>
         <article class="element">
           <img class="element__photo" src="./images/image5.png" alt="Фото гор и леса">
           <div class="element__info">
             <h2 class="element__title">Домбай</h2>
-            <button class="element__button" type="button"><img class="element__like element__like_active" src="./images/logo/like.svg" alt="Иконка сердечка"></button>
+            <button class="element__button" type="button"><img class="element__like" src="./images/logo/like.svg" alt="Иконка сердечка"></button>
           </div>
         </article>
         <article class="element">
           <img class="element__photo" src="./images/image6.png" alt="Фото старого полуразрушенного здания">
           <div class="element__info">
             <h2 class="element__title">Карачаево-Черкесия</h2>
-            <button class="element__button" type="button"><img class="element__like element__like_active" src="./images/logo/like.svg" alt="Иконка сердечка"></button>
+            <button class="element__button" type="button"><img class="element__like" src="./images/logo/like.svg" alt="Иконка сердечка"></button>
           </div>
-        </article>
+        </article> -->
       </div>
     </main>
     <footer class="footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
   </div>
-  <div class="popup">
+  <template id="add-element">
+    <article class="element">
+      <button class="buton-delete" type="button">
+        <div class="buton-delete__image"></div>
+      </button>
+      <img class="element__photo" src="" alt="">
+      <div class="element__info">
+        <h2 class="element__title"></h2>
+        <button class="element__button" type="button">
+          <div class="element__like"></div>
+        </button>
+      </div>
+    </article>
+  </template>
+  <template id="show-image">
+    <div class="popup">
+      <div class="show-image">
+        <button class="button-close" type="button"><img class="popup__close" src="./images/logo/close.svg"
+            alt=""></button>
+        <img class="show-image__image" src="" alt="">
+        <h2 class="show-image__title"></h2>
+      </div>
+    </div>
+  </template>
+  <div class="popup popup_card">
     <div class="popup__container">
-        <button class="button-close" type="button"><img class="popup__close" src="./images/logo/close.svg" alt="Кнопка закрытия"></button>
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="form" name="about">
+      <button class="button-close" type="button"><img class="popup__close popup__close_card" src="./images/logo/close.svg"
+          alt="Кнопка закрытия"></button>
+      <h2 class="popup__title popup__title_new-place">Новое место</h2>
+      <form class="form form_card" name="about">
+        <input class="form__input form__input_name form__input_place" type="text" name="firstname" placeholder="Название">
+        <input class="form__input form__input_work form__input_address-place" type="text" name="profession" placeholder="Ссылка на картинку">
+        <button class="form__button" type="submit">
+          Создать
+        </button>
+      </form>
+    </div>
+  </div>
+    <div class="popup popup_profile">
+      <div class="popup__container">
+        <button class="button-close" type="button"><img class="popup__close popup__close_profile" src="./images/logo/close.svg"
+            alt="Кнопка закрытия"></button>
+        <h2 class="popup__title popup__title_edit">Редактировать профиль</h2>
+        <form class="form form_profile" name="about">
           <input class="form__input form__input_name" type="text" name="firstname">
           <input class="form__input form__input_work" type="text" name="profession">
           <button class="form__button" type="submit">
             Сохранить
           </button>
         </form>
+      </div>
     </div>
-  </div>
+    
   <script src="./script/index.js"></script>
 </body>
 

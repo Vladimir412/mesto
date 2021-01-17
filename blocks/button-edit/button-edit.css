@@ -7,6 +7,8 @@
   border: 1px solid #FFFFFF;
   outline: none;
   box-sizing: border-box;
+  cursor: pointer;
+  transition: .3s;
 }
 
 .button-edit:hover {

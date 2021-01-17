@@ -1,0 +1,9 @@
+.buton-delete__image {
+    background-image: url(../../../images/logo/delete.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 15px;
+    color: brown;
+}

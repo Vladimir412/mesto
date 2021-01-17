@@ -1,5 +1,6 @@
 .popup__close {
   width: 32px;
+  cursor: pointer;
 }
 
 .popup__close:hover {
