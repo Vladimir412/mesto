@@ -64,3 +64,10 @@
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__show-image/popup__show-image.css);
+
+
+/*   show-image  */
+
+@import url(../blocks/show-image/show-image.css);
+@import url(../blocks/show-image/__image/show-image__image.css);
+@import url(../blocks/show-image/__title/show-image__title.css);

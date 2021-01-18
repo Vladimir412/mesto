@@ -49,6 +49,8 @@ const initialCards = [
 
     initialCard.querySelector('.buton-delete').addEventListener('click', deleteCard)
     initialCard.querySelector('.element__photo').src = element.link;
+    initialCard.querySelector('.element__photo').addEventListener('click', showPicture);
+
     initialCard.querySelector('.element__title').textContent = element.name;
     initialCard.querySelector('.element__like').addEventListener('click', addLike);
 
@@ -98,20 +100,23 @@ function openPopupAddCard() {
 }
 
 
+function openPopupImage() {
+  const popupImage = document.querySelector('.popup_image');
+  popupImage.classList.add('popup__open');
+}
+
+
 function closePopup() {
   popup.forEach(function (item) {
     item.classList.remove('popup__open');
   });
 }
 
-// function showPicture(evt) {
-//   const cardTemplate = document.querySelector('#show-image').content;
-//   const cardElement = cardTemplate.cloneNode(true);
+function showPicture() {
+  
 
-//   cardElement = document.querySelector('.show-image__image').src = evt.value.src;
-//   cardElement = document.querySelector('.show-image__title').textContent = evt.
-//   popup.classList.add('popup__open');
-// }
+  openPopupImage() 
+}
 
 
 function handleFormSubmit (evt) {
@@ -143,5 +148,3 @@ formCard.addEventListener('submit', addCard);
 closeBtn.forEach(function (item) {
   item.addEventListener('click', closePopup);
 })
-
-// elementContainer.addEventListener('click', openPopup)
