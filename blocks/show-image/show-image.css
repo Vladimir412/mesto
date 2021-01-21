@@ -1,8 +1,4 @@
 .show-image {
-    width: 100%;
-    max-width: 75vw;
-    max-height: 75vh;
-    background-color: blue;
-    margin: auto;
-    position: relative;
+  position: relative;
+  margin: auto;
 }
