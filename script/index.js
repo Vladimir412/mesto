@@ -1,17 +1,17 @@
-let popup = document.querySelectorAll('.popup');
-let edit = document.querySelector('.button-edit');
-let closeBtn = document.querySelectorAll('.button-close');
-let formProfile = document.querySelector('.form_profile');
-let formCard = document.querySelector('.form_card');
+const popup = document.querySelectorAll('.popup');
+const edit = document.querySelector('.button-edit');
+const closeBtn = document.querySelectorAll('.button-close');
+const formProfile = document.querySelector('.form_profile');
+const formCard = document.querySelector('.form_card');
 const formBtn = document.querySelector('.form__button');
 const plusBtn = document.querySelector('.button-plus');
 const cardTemplate = document.querySelector('#add-element').content;
 const elementsContainer = document.querySelector('.elements');
-let elementContainer = document.querySelectorAll('.element');
-let namePopup = document.querySelector('.form__input_name');
-let workPopup = document.querySelector('.form__input_work');
-let nameProfile = document.querySelector('.profile__title');
-let workProile = document.querySelector('.profile__subtitle');
+const elementContainer = document.querySelectorAll('.element');
+const namePopup = document.querySelector('.form__input_name');
+const workPopup = document.querySelector('.form__input_work');
+const nameProfile = document.querySelector('.profile__title');
+const workProile = document.querySelector('.profile__subtitle');
 const placeUrl = document.querySelector('.form__input_address-place');
 const place = document.querySelector('.form__input_place');
 const elemenstPhoto = document.querySelectorAll('.element__photo');
@@ -82,7 +82,7 @@ function showPicture(evt) {
   let titleElement = evt.target.closest('.element');
   titleElement = titleElement.querySelector('.element__title');
   title.textContent = titleElement.textContent;
-  openPopupImage() 
+  openPopupImage()
 }
 
 
@@ -105,7 +105,7 @@ function openPopupImage() {
 }
 
 function closePopup() {
-  
+
   popup.forEach(function (item) {
     item.classList.remove('popup__open');
   });
