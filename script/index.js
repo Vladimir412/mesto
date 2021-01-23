@@ -13,7 +13,7 @@ const nameProfile = document.querySelector('.profile__title');
 const workProile = document.querySelector('.profile__subtitle');
 const placeUrl = document.querySelector('.form__input_address-place');
 const place = document.querySelector('.form__input_place');
-const elemenstPhoto = document.querySelectorAll('.element__photo');
+
 
 
 const initialCards = [
@@ -43,31 +43,51 @@ const initialCards = [
     }
   ];
 
-  // Создание карточек из массива
-  initialCards.forEach(function (element) {
-    const initialCard = cardTemplate.cloneNode(true);
+function createCard(card) {
+  const someCard = cardTemplate.cloneNode(true);
+  someCard.querySelector('.buton-delete').addEventListener('click', deleteCard);
+  someCard.querySelector('.element__photo').src = card.link;
+  someCard.querySelector('.element__photo').addEventListener('click', showPicture);
+  someCard.querySelector('.element__title').textContent = card.name;
+  someCard.querySelector('.element__like').addEventListener('click', addLike);
+    return someCard;
+}
 
-    initialCard.querySelector('.buton-delete').addEventListener('click', deleteCard)
-    initialCard.querySelector('.element__photo').src = element.link;
-    initialCard.querySelector('.element__photo').addEventListener('click', showPicture);
-    initialCard.querySelector('.element__title').textContent = element.name;
-    initialCard.querySelector('.element__like').addEventListener('click', addLike);
-    elementsContainer.append(initialCard);
-  })
+function renderCard(wrap, data) {
+  wrap.prepend(createCard(data));
+ }
+
+initialCards.forEach((item) => {
+  renderCard(elementsContainer, createCard(item));
+});
+
+
+  // // Создание карточек из массива
+  // initialCards.forEach(function (element) {
+  //   const initialCard = cardTemplate.cloneNode(true);
+
+  //   initialCard.querySelector('.buton-delete').addEventListener('click', deleteCard)
+  //   initialCard.querySelector('.element__photo').src = element.link;
+  //   initialCard.querySelector('.element__photo').addEventListener('click', showPicture);
+  //   initialCard.querySelector('.element__title').textContent = element.name;
+  //   initialCard.querySelector('.element__like').addEventListener('click', addLike);
+  //   elementsContainer.append(initialCard);
+  // })
 
   // Добавление карточек 
-  function addCard(evt) {
-    evt.preventDefault();
-      const cardElement = cardTemplate.cloneNode(true);
+  // function addCard(evt) {
+  //   evt.preventDefault();
+  //     const cardElement = cardTemplate.cloneNode(true);
+      
   
-      cardElement.querySelector('.element__photo').src = placeUrl.value;
-      cardElement.querySelector('.element__photo').addEventListener('click', showPicture);
-      cardElement.querySelector('.element__title').textContent = place.value;
-      cardElement.querySelector('.buton-delete').addEventListener('click', deleteCard);
-      cardElement.querySelector('.element__like').addEventListener('click', addLike);
-      elementsContainer.prepend(cardElement);
-      closePopup();
-  }
+  //     cardElement.querySelector('.element__photo').src = placeUrl.value;
+  //     cardElement.querySelector('.element__photo').addEventListener('click', showPicture);
+  //     cardElement.querySelector('.element__title').textContent = place.value;
+  //     cardElement.querySelector('.buton-delete').addEventListener('click', deleteCard);
+  //     cardElement.querySelector('.element__like').addEventListener('click', addLike);
+  //     elementsContainer.prepend(cardElement);
+  //     closePopup();
+  // }
 
   // Удаление карточки
   function deleteCard(evt) {
@@ -143,7 +163,7 @@ plusBtn.addEventListener('click', function () {
 
 formProfile.addEventListener('submit', handleFormSubmit);
 
-formCard.addEventListener('submit', addCard);
+// formCard.addEventListener('submit', addCard);
 
 closeBtn.forEach(function (item) {
   item.addEventListener('click', closePopup);
