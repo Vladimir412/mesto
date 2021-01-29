@@ -16,6 +16,9 @@ const popupImage = document.querySelector('.popup_image');
 const popupCard = document.querySelector('.popup_card');
 const image = popupImage.querySelector('.show-image__image');
 const showTitle = popupImage.querySelector('.show-image__title');
+const closeButtonProfile = popupProfile.querySelector('.button-close_profile');
+const closeButtonImage = popupImage.querySelector('.button-close_image');
+const closeButtonCard = popupCard.querySelector('.button-close_card');
 
 
 function createCard(card) {
@@ -74,9 +77,6 @@ function handleShowPicture(card) {
 // Переключатель попапа
 function openPopup(popup) {
   popup.classList.add('popup__open');
-  popup.querySelector('.button-close').addEventListener('click', function () {
-    closePopup(popup);
-  })
 }
 
 // Открытие добавление карточки
@@ -113,3 +113,7 @@ plusBtn.addEventListener('click', openPopupAddCard);
 formProfile.addEventListener('submit', handleFormSubmit);
 
 formCard.addEventListener('submit', addCard);
+
+closeButtonProfile.addEventListener('click', () => closePopup(popupProfile));
+closeButtonImage.addEventListener('click', () => closePopup(popupImage));
+closeButtonCard.addEventListener('click', () => closePopup(popupCard));
