@@ -81,7 +81,6 @@ function openPopup(popup) {
 
 // Открытие добавление карточки
 function openPopupAddCard() {
-  
   openPopup(popupCard);
   place.value = '';
   placeUrl.value = '';
