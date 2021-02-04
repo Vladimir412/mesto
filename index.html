@@ -59,10 +59,12 @@
       <button class="button-close button-close_card" type="button"><img class="popup__close popup__close_card" src="./images/logo/close.svg"
           alt="Кнопка закрытия"></button>
       <h2 class="popup__title popup__title_new-place">Новое место</h2>
-      <form class="form form_card" name="about">
-        <input class="form__input form__input_place" type="text" name="firstname" placeholder="Название">
-        <input class="form__input form__input_address-place" type="text" name="profession" placeholder="Ссылка на картинку">
-        <button class="form__button" type="submit">
+      <form class="form form_card" name="about" novalidate>
+        <input id="title-input" class="form__input form__input_place" type="text" name="title" placeholder="Название" minlength="2" maxlength="30" required pattern="^[a-zA-Z]+$">
+        <span class="form__input-error title-input-error"></span>
+        <input id="address-input" class="form__input form__input_address-place" type="url" name="address" placeholder="Ссылка на картинку" required pattern="^[a-zA-Z]+$">
+        <span class="form__input-error address-input-error"></span>
+        <button class="form__button" type="submit" disabled>
           Создать
         </button>
       </form>
@@ -73,15 +75,18 @@
         <button class="button-close button-close_profile" type="button"><img class="popup__close popup__close_profile" src="./images/logo/close.svg"
             alt="Кнопка закрытия"></button>
         <h2 class="popup__title popup__title_edit">Редактировать профиль</h2>
-        <form class="form form_profile" name="about">
-          <input class="form__input form__input_name" type="text" name="firstname">
-          <input class="form__input form__input_work" type="text" name="profession">
-          <button class="form__button" type="submit">
+        <form class="form form_profile" name="about" novalidate>
+          <input id="name-input" class="form__input form__input_name" type="text" name="firstname" placeholder="Имя" minlength="2" maxlength="40" required pattern="^[a-zA-Z]+$">
+          <span class="form__input-error name-input-error"></span>
+          <input id="profession-input" class="form__input form__input_work" type="text" name="profession" placeholder="О себе" minlength="2" maxlength="200" required pattern="^[a-zA-Z]+$">
+          <span class="form__input-error profession-input-error"></span>
+          <button class="form__button" type="submit" disabled>
             Сохранить
           </button>
         </form>
       </div>
     </div>
+    <script src="./script/validate.js"></script>
     <script src="./script/initial-cards.js"></script>
   <script src="./script/index.js"></script>
 </body>
