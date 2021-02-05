@@ -2,6 +2,7 @@
     opacity: .2;
 }
 
-.form__button_disabled:hover:disabled {
+.form__button_disabled:disabled:hover {
     opacity: .2;
+    cursor: default;
 }

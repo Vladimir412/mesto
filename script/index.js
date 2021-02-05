@@ -44,7 +44,7 @@ initialCards.forEach((item) => {
   renderCard(elementsContainer, item);
 });
 
-  // Добавление карточек 
+  // Добавление карточек
   function addCard(evt) {
     evt.preventDefault();
     const card = {
@@ -55,7 +55,7 @@ initialCards.forEach((item) => {
     renderCard(elementsContainer, card)
     closePopup(popupCard);
   }
-  
+
   // Удаление карточки
   function handleDeleteCard(evt) {
     evt.target.closest('.element').remove();
@@ -99,6 +99,7 @@ function handleFormSubmit (evt) {
     closePopup(popupProfile);
 }
 
+
 // Настройка редактора
 editUserProfileButton.addEventListener('click', function () {
     namePopup.value = nameProfile.textContent;
@@ -116,3 +117,12 @@ formCard.addEventListener('submit', addCard);
 closeButtonProfile.addEventListener('click', () => closePopup(popupProfile));
 closeButtonImage.addEventListener('click', () => closePopup(popupImage));
 closeButtonCard.addEventListener('click', () => closePopup(popupCard));
+
+function handleKeyEsc(evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.currentTarget);
+  }
+}
+popup.addEventListener('click', () => {
+  handleKeyEsc()
+})
