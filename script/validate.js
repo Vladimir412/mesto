@@ -148,4 +148,3 @@ enableValidation(selectors = {
     errorClass: 'form__error_active'
   });
 
-console.log(selectors.formSelector)

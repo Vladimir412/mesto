@@ -118,11 +118,32 @@ closeButtonProfile.addEventListener('click', () => closePopup(popupProfile));
 closeButtonImage.addEventListener('click', () => closePopup(popupImage));
 closeButtonCard.addEventListener('click', () => closePopup(popupCard));
 
-function handleKeyEsc(evt) {
+// popup.addEventListener('click', function(event) {
+//   if (event.target === event.currentTarget) {
+//       closePopup();
+//   } else if (event.target === popupCont) {
+//     closePopup();
+//   }	
+// })
+
+function closePopupOther(evt) {
   if (evt.target === evt.currentTarget) {
-    closePopup(evt.currentTarget);
-  }
+           closePopup(evt.currentTarget);
+       }
 }
-popup.addEventListener('click', () => {
-  handleKeyEsc()
-})
+
+popupCard.addEventListener('click', closePopupOther);
+popupImage.addEventListener('click', closePopupOther);
+popupProfile.addEventListener('click', closePopupOther);
+
+function closePopupEsc(evt) {
+  if (evt.keyCode == 27) {
+    closePopup(evt)
+    console.log('gg')
+  }
+  console.log('aa')
+}
+
+popupCard.addEventListener('keydown', closePopupEsc);
+popupImage.addEventListener('keydown', closePopupEsc);
+popupProfile.addEventListener('keydown', closePopupEsc);
