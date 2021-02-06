@@ -19,6 +19,7 @@ const showTitle = popupImage.querySelector('.show-image__title');
 const closeButtonProfile = popupProfile.querySelector('.button-close_profile');
 const closeButtonImage = popupImage.querySelector('.button-close_image');
 const closeButtonCard = popupCard.querySelector('.button-close_card');
+let activePopup = null;
 
 
 function createCard(card) {
@@ -76,6 +77,7 @@ function handleShowPicture(card) {
 
 // Переключатель попапа
 function openPopup(popup) {
+  activePopup = popup;
   popup.classList.add('popup__open');
 }
 
@@ -88,6 +90,7 @@ function openPopupAddCard() {
 
 // Закрытие попапа
 function closePopup(popup) {
+  activePopup = null;
   popup.classList.remove('popup__open');
 }
 
@@ -118,32 +121,20 @@ closeButtonProfile.addEventListener('click', () => closePopup(popupProfile));
 closeButtonImage.addEventListener('click', () => closePopup(popupImage));
 closeButtonCard.addEventListener('click', () => closePopup(popupCard));
 
-// popup.addEventListener('click', function(event) {
-//   if (event.target === event.currentTarget) {
-//       closePopup();
-//   } else if (event.target === popupCont) {
-//     closePopup();
-//   }	
-// })
-
 function closePopupOther(evt) {
   if (evt.target === evt.currentTarget) {
            closePopup(evt.currentTarget);
        }
 }
 
-popupCard.addEventListener('click', closePopupOther);
-popupImage.addEventListener('click', closePopupOther);
-popupProfile.addEventListener('click', closePopupOther);
+popupCard.addEventListener('mousedown', closePopupOther);
+popupImage.addEventListener('mousedown', closePopupOther);
+popupProfile.addEventListener('mousedown', closePopupOther);
 
 function closePopupEsc(evt) {
-  if (evt.keyCode == 27) {
-    closePopup(evt)
-    console.log('gg')
+  if (evt.keyCode === 27) {
+    closePopup(activePopup)
   }
-  console.log('aa')
 }
 
-popupCard.addEventListener('keydown', closePopupEsc);
-popupImage.addEventListener('keydown', closePopupEsc);
-popupProfile.addEventListener('keydown', closePopupEsc);
+document.addEventListener('keydown', closePopupEsc);
