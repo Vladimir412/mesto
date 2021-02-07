@@ -19,6 +19,7 @@ const showTitle = popupImage.querySelector('.show-image__title');
 const closeButtonProfile = popupProfile.querySelector('.button-close_profile');
 const closeButtonImage = popupImage.querySelector('.button-close_image');
 const closeButtonCard = popupCard.querySelector('.button-close_card');
+const buttonEsc = 27;
 let activePopup = null;
 
 
@@ -79,6 +80,7 @@ function handleShowPicture(card) {
 function openPopup(popup) {
   activePopup = popup;
   popup.classList.add('popup__open');
+  document.addEventListener('keydown', closePopupEsc);
 }
 
 // Открытие добавление карточки
@@ -86,12 +88,14 @@ function openPopupAddCard() {
   openPopup(popupCard);
   place.value = '';
   placeUrl.value = '';
+  popupCard.querySelector('.form__button').setAttribute('disabled', 'disabled');
 }
 
 // Закрытие попапа
 function closePopup(popup) {
   activePopup = null;
   popup.classList.remove('popup__open');
+  document.removeEventListener('keydown', closePopupEsc);
 }
 
 // Добавление информации в profile
@@ -132,9 +136,9 @@ popupImage.addEventListener('mousedown', closePopupOther);
 popupProfile.addEventListener('mousedown', closePopupOther);
 
 function closePopupEsc(evt) {
-  if (evt.keyCode === 27) {
+  if (evt.keyCode === buttonEsc) {
     closePopup(activePopup)
   }
 }
 
-document.addEventListener('keydown', closePopupEsc);
+

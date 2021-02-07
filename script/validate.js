@@ -1,3 +1,13 @@
+const selectors = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__button',
+  inactiveButtonClass: 'form__button_disabled',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__error_active'
+}
+
+
 const showInputError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(selectors.inputErrorClass);
@@ -46,6 +56,7 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonElement) => {
     if (hasInvalidInput(inputList)) {
         buttonElement.classList.add(selectors.inactiveButtonClass);
+        buttonElement.setAttribute('disabled', 'disabled');
     } else {
         buttonElement.classList.remove(selectors.inactiveButtonClass);
         buttonElement.removeAttribute('disabled');
@@ -63,12 +74,4 @@ const enableValidation = () => {
     });
   };
 
-enableValidation(selectors = {
-    formSelector: '.form',
-    inputSelector: '.form__input',
-    submitButtonSelector: '.form__button',
-    inactiveButtonClass: 'form__button_disabled',
-    inputErrorClass: 'form__input_type_error',
-    errorClass: 'form__error_active'
-  });
-
+enableValidation(selectors)
