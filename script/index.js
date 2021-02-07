@@ -1,4 +1,4 @@
-const popup = document.querySelectorAll('.popup');
+
 const editUserProfileButton = document.querySelector('.button-edit');
 const formProfile = document.querySelector('.form_profile');
 const formCard = document.querySelector('.form_card');
@@ -112,6 +112,7 @@ editUserProfileButton.addEventListener('click', function () {
     namePopup.value = nameProfile.textContent;
     workPopup.value = workProile.textContent;
     openPopup(popupProfile);
+    popupProfile.querySelector('.form__button').setAttribute('disabled', 'disabled');
 });
 
 // Слушатели
@@ -140,5 +141,3 @@ function closePopupEsc(evt) {
     closePopup(activePopup)
   }
 }
-
-
