@@ -1,4 +1,4 @@
-
+// показывает ошибку валидации
 const showInputError = (formElement, inputElement, errorMessage, data) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(data.inputErrorClass);
@@ -43,11 +43,16 @@ const hasInvalidInput = (inputList) => {
     });
 };
 
+// Отключение кнопки
+const disabledButton = (buttonElement, data) => {
+    buttonElement.disabled = true;
+    buttonElement.classList.add(data.inactiveButtonClass)
+  }
+
 // Переключает состояние кнопки
 const toggleButtonState = (formElement, inputList, buttonElement, data) => {
     if (hasInvalidInput(inputList)) {
-        buttonElement.classList.add(data.inactiveButtonClass);
-        buttonElement.setAttribute('disabled', 'disabled');
+        disabledButton(buttonElement, data)
     } else {
         buttonElement.classList.remove(data.inactiveButtonClass);
         buttonElement.removeAttribute('disabled');

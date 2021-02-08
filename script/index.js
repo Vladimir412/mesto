@@ -19,6 +19,8 @@ const showTitle = popupImage.querySelector('.show-image__title');
 const closeButtonProfile = popupProfile.querySelector('.button-close_profile');
 const closeButtonImage = popupImage.querySelector('.button-close_image');
 const closeButtonCard = popupCard.querySelector('.button-close_card');
+const cardFormSubmitButton = popupCard.querySelector('.form__button');
+const profileFormSubmitButton = popupProfile.querySelector('.form__button');
 const buttonEsc = 27;
 let activePopup = null;
 
@@ -88,7 +90,7 @@ function openPopupAddCard() {
   openPopup(popupCard);
   place.value = '';
   placeUrl.value = '';
-  popupCard.querySelector('.form__button').setAttribute('disabled', 'disabled');
+  disabledButton(cardFormSubmitButton, selectors);
 }
 
 // Закрытие попапа
@@ -112,7 +114,7 @@ editUserProfileButton.addEventListener('click', function () {
     namePopup.value = nameProfile.textContent;
     workPopup.value = workProile.textContent;
     openPopup(popupProfile);
-    popupProfile.querySelector('.form__button').setAttribute('disabled', 'disabled');
+    disabledButton(profileFormSubmitButton, selectors);
 });
 
 // Слушатели
