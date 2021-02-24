@@ -1,4 +1,5 @@
 import {Card} from './Card.js';
+import {FormValidator, selectors} from './FormValidator.js'
 export {image, showTitle, popupImage, openPopup};
 
 
@@ -28,90 +29,12 @@ const buttonEsc = 27;
 let activePopup = null;
 
 
-// function createCard(card) {
-//   // const cardElement = cardTemplate.cloneNode(true);
-//   // const photo = cardElement.querySelector('.element__photo');
-//   // const title = cardElement.querySelector('.element__title');
-//   // const buttonDelete = cardElement.querySelector('.buton-delete');
-//   // const buttonLike = cardElement.querySelector('.element__like');
-//   // buttonDelete.addEventListener('click', handleDeleteCard);
-//   // photo.src = card.link;
-//   // photo.alt = card.name;
-//   // photo.addEventListener('click', () => handleShowPicture(card));
-//   // title.textContent = card.name;
-//   // buttonLike.addEventListener('click', handleAddLike);
-//   return cardElement;
-// }
-
-// class Card {
-//   constructor(data, selector) {
-//     this._title = data.title;
-//     this._photo = data.photo;
-//     this._selector = selector;
-//   }
-  
-//   _getTemplate() {
-//        const cardElement = document.querySelector(this._selector).content.querySelector('.element').cloneNode(true);
-//       return cardElement;
-//   }
-
-//   generateCard() {
-//     this._element = this._getTemplate();
-//     this._setEventListener();
-    
-//     this._element.querySelector('.element__photo').src = this._photo;
-//     this._element.querySelector('.element__photo').alt = this._title;
-//     // this._element.querySelector('.element__photo').addEventListener('click', () => handleShowPicture());
-//     this._element.querySelector('.element__title').textContent = this._title;
-//     // this._element.querySelector('.buton-delete').addEventListener('click', () => _handleDeleteCard(evt));
-//     // this._element.querySelector('.element__like').addEventListener('click', () => _handleAddLike(evt));
-    
-//     return this._element
-//   }
-  
-//   // Удаление карточки
-//   _handleDeleteCard(evt) {
-//       this._element.closest('.element').remove();
-//   }
-
-//   // Переключение лайка
-//   _handleAddLike(evt) {
-//       this._element.classList.toggle('element__like_active');
-//   }
-
-//   // Открытие картинки
-//   _handleShowPicture() {
-//       showTitle.textContent = this._title;
-//       image.src = this._photo;
-//       image.alt = this._title;
-//       openPopup(popupImage)
-//   }
-//   _setEventListener() {
-//     this._element.querySelector('.buton-delete').addEventListener('click', () => {
-//       this._handleDeleteCard();
-//     })
-
-//     this._element.querySelector('.element__like').addEventListener('click', () => {
-//       this._handleAddLike();
-//     })
-
-//     this._element.querySelector('.element__photo').addEventListener('click', () => {
-//       this._handleShowPicture()
-//     })
-//   }
-// }
-
 // Добавление каточки на страницу
 function renderCard(wrap, data, selector) {
   const card = new Card(data, selector);
   const cardElement = card.generateCard()
   wrap.prepend(cardElement);
  }
-
-function clearInputValidation(selector, form) {
-  const clear = new FormValidator(selector, form);
-  const clearInput = clear.clearValidation()
-}
 
  function renderForm(selector, form) {
   const valid = new FormValidator(selector, form)
@@ -134,24 +57,6 @@ initialCards.forEach((item) => {
     closePopup(popupCard);
   }
 
-  // // Удаление карточки
-  // function handleDeleteCard(evt) {
-  //   evt.target.closest('.element').remove();
-  // }
-
-  // // Переключение лайка
-  // function handleAddLike(evt) {
-  //   evt.target.classList.toggle('element__like_active');
-  // }
-
-//   // Открытие картинки
-// function handleShowPicture(card) {
-//   showTitle.textContent = card.name;
-//   image.src = card.link;
-//   image.alt = card.name;
-//   openPopup(popupImage)
-// }
-
 // Переключатель попапа
 function openPopup(popup) {
   activePopup = popup;
@@ -164,8 +69,6 @@ function openPopupAddCard() {
   openPopup(popupCard);
   place.value = '';
   placeUrl.value = '';
-  clearInputValidation(selectors, formCard);
-  debugger
 }
 
 // Закрытие попапа
@@ -189,7 +92,6 @@ editUserProfileButton.addEventListener('click', function () {
     namePopup.value = nameProfile.textContent;
     workPopup.value = workProile.textContent;
     openPopup(popupProfile);
-    clearInputValidation(selectors, formProfile);
 });
 
 // Слушатели
