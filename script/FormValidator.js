@@ -1,4 +1,4 @@
-export {FormValidator, selectors}
+export {FormValidator, selectors};
 
 
 class FormValidator {
@@ -9,7 +9,7 @@ class FormValidator {
 
     
  enableValidation() {
-        this._form.addEventListener('submit', (evt) => {
+    this._form.addEventListener('submit', (evt) => {
         evt.preventDefault();
     });
     this._setEventListeners();
@@ -46,6 +46,7 @@ class FormValidator {
     const buttonElement = this._form.querySelector(this._selector.submitButtonSelector);
     this._toggleButtonState(inputList, buttonElement);
     inputList.forEach((inputElement) => {
+        this._hidenInputError(inputElement)
         inputElement.addEventListener('input', () => {
             this._checkInputValidity(inputElement);
             this._toggleButtonState(inputList, buttonElement);

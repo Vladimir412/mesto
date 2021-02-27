@@ -1,4 +1,3 @@
-export {Card};
 import {image, showTitle, popupImage, openPopup} from './index.js';
 
 
@@ -18,10 +17,12 @@ class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListener();
+    const photo = this._element.querySelector('.element__photo');
+    const title = this._element.querySelector('.element__title');
     
-    this._element.querySelector('.element__photo').src = this._photo;
-    this._element.querySelector('.element__photo').alt = this._title;
-    this._element.querySelector('.element__title').textContent = this._title;
+    photo.src = this._photo;
+    photo.alt = this._title;
+    title.textContent = this._title;
     
     return this._element
   }
@@ -59,3 +60,5 @@ class Card {
     })
   }
 }
+
+export {Card};
