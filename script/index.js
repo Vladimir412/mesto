@@ -1,6 +1,5 @@
 import {Card} from './Card.js';
 import {FormValidator, selectors} from './FormValidator.js'
-export {image, showTitle, popupImage, openPopup};
 
 
 const editUserProfileButton = document.querySelector('.button-edit');
@@ -119,3 +118,5 @@ formCard.addEventListener('submit', addCard);
 closeButtonProfile.addEventListener('click', () => closePopup(popupProfile));
 closeButtonImage.addEventListener('click', () => closePopup(popupImage));
 closeButtonCard.addEventListener('click', () => closePopup(popupCard));
+
+export {image, showTitle, popupImage, openPopup};
