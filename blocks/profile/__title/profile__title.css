@@ -12,6 +12,9 @@
   margin-right: 18px;
   grid-column: 1/2;
   grid-row: 1/2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
