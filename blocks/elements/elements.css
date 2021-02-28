@@ -1,7 +1,7 @@
 .elements {
   width: 100%;
   max-width: 880px;
-  min-height: 48.7vh;
+  min-height: 472px;
   margin: 0 auto 67px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -25,9 +25,40 @@
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .elements {
     width: 88.1%;
+    min-height: 398px;
     margin: 0 auto 47px;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, 1fr);
     row-gap: 21px;
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 436px) {
+  .elements {
+    min-height: 400px;
+  }
+}
+
+@media screen and (min-width: 401px) and (max-width: 425px) {
+  .elements {
+    min-height: 401px;
+  }
+}
+
+@media screen and (min-width: 373px) and (max-width: 400px) {
+  .elements {
+    min-height: 403px;
+  }
+}
+
+@media screen and (min-width: 345px) and (max-width: 372px) {
+  .elements {
+    min-height: 405px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 344px) {
+  .elements {
+    min-height: 407px;
   }
 }
