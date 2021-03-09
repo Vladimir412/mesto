@@ -1,11 +1,12 @@
-import {image, showTitle, popupImage, openPopup} from './index.js';
+import {image, showTitle, popupImage, openPopup} from '../pages/index.js';
 
 
-class Card {
-  constructor(data, selector) {
+export default class Card {
+  constructor(data, {handleCardClick}, selector) {
     this._title = data.title;
     this._photo = data.photo;
     this._selector = selector;
+    this._handleCardClick = handleCardClick
   }
   
   // Получаем карточку
@@ -28,21 +29,23 @@ class Card {
   }
   
   // Удаление карточки
-  _handleDeleteCard(evt) {
+  _handleDeleteCard() {
       this._element.closest('.element').remove();
   }
 
   // Переключение лайка
-  _handleAddLike(evt) {
+  _handleAddLike() {
       this._element.querySelector('.element__like').classList.toggle('element__like_active');
   }
 
   // Открытие картинки
   _handleShowPicture() {
-      showTitle.textContent = this._title;
-      image.src = this._photo;
-      image.alt = this._title;
-      openPopup(popupImage)
+    console.log('card')
+    this._handleCardClick();
+      // showTitle.textContent = this._title;
+      // image.src = this._photo;
+      // image.alt = this._title;
+      // openPopup(popupImage)
   }
 
   // Объединяем всех слушателей в одну функцию

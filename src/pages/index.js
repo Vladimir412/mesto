@@ -1,5 +1,9 @@
-import {Card} from './Card.js';
-import {FormValidator, selectors} from './FormValidator.js'
+import './index.css';
+import Card from '../components/Card.js';
+import Section from '../components/Section.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import {FormValidator, selectors} from '../script/FormValidator.js';
+import {initialCards} from '../script/initial-cards.js';
 
 
 const editUserProfileButton = document.querySelector('.button-edit');
@@ -9,9 +13,9 @@ const plusBtn = document.querySelector('.button-plus');
 const popupImage = document.querySelector('.popup_image');
 const image = popupImage.querySelector('.show-image__image');
 const showTitle = popupImage.querySelector('.show-image__title');
-const elementsContainer = document.querySelector('.elements');
-const namePopup = document.querySelector('.form__input_name');
-const workPopup = document.querySelector('.form__input_work');
+// const elementsContainer = document.querySelector('.elements');
+export const namePopup = document.querySelector('.form__input_name');
+export const workPopup = document.querySelector('.form__input_work');
 const nameProfile = document.querySelector('.profile__title');
 const workProile = document.querySelector('.profile__subtitle');
 const placeUrl = document.querySelector('.form__input_address-place');
@@ -25,12 +29,44 @@ const buttonEsc = 27;
 let activePopup = null;
 
 
-// Добавление каточки на страницу
-function renderCard(wrap, data, selector) {
-  const card = new Card(data, selector);
-  const cardElement = card.generateCard()
-  wrap.prepend(cardElement);
- }
+// const addArrCards = new Section({
+//   items: initialCards,
+//   renderer: (item) => {
+//     const card = new Card(item, '#add-element');
+//     const cardElement = card.generateCard();
+//     addArrCards.addItem(cardElement)
+//   }
+// }, '.elements')
+
+// addArrCards.renderItems()
+
+function renderCard(item) {
+  const addArrCards = new Section({
+    items: item,
+    renderer: (item) => {
+      const card = new Card(item,
+         {handleCardClick: () => {
+           const show = new PopupWithImage('popup_image');
+           show.open();
+         }
+        }, '#add-element');
+      const cardElement = card.generateCard();
+      addArrCards.addItem(cardElement)
+    }
+  }, '.elements')
+  
+  addArrCards.renderItems()
+}
+
+renderCard(initialCards)
+
+
+// // Добавление каточки на страницу
+// function renderCard(wrap, data, selector) {
+//   const card = new Card(data, selector);
+//   const cardElement = card.generateCard()
+//   wrap.prepend(cardElement);
+//  }
 
  // Валидация форм
  function renderForm(selector, form) {
@@ -38,9 +74,9 @@ function renderCard(wrap, data, selector) {
   valid.enableValidation()
 }
 
-initialCards.forEach((item) => {
-  renderCard(elementsContainer, item, '#add-element')
-});
+// initialCards.forEach((item) => {
+//   renderCard(elementsContainer, item, '#add-element')
+// });
 
   // Добавление карточек
   function addCard(evt) {
@@ -50,8 +86,10 @@ initialCards.forEach((item) => {
       photo: placeUrl.value
       }
 
-    renderCard(elementsContainer, card, '#add-element')
-    closePopup(popupCard);
+      renderCard(card);
+
+    // renderCard(elementsContainer, card, '#add-element')
+    // closePopup(popupCard);
   }
 
 // Переключатель попапа

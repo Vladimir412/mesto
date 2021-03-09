@@ -1,4 +1,4 @@
-export {FormValidator, selectors};
+
 
 
 class FormValidator {
@@ -92,3 +92,6 @@ const selectors = {
     inputErrorClass: 'form__input_type_error',
     errorClass: 'form__error_active'
   }
+
+
+  export {FormValidator, selectors};
