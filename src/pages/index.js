@@ -4,10 +4,34 @@ import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import {FormValidator, selectors} from '../components/FormValidator.js';
-import {initialCards} from '../script/initial-cards.js';
 import UserInfo from '../components/UserInfo';
 
-
+const initialCards = [
+  {
+    title: 'Архыз',
+    photo: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    title: 'Челябинская область',
+    photo: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    title: 'Иваново',
+    photo: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    title: 'Камчатка',
+    photo: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    title: 'Холмогорский район',
+    photo: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    title: 'Байкал',
+    photo: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
 const editUserProfileButton = document.querySelector('.button-edit');
 const formProfile = document.querySelector('.form_profile');
 const formCard = document.querySelector('.form_card');
