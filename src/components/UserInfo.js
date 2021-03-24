@@ -1,21 +1,19 @@
-import {namePopup, workPopup} from '../pages/index.js';
+
 
 export default class UserInfo {
-    constructor({name, info}) {
-    this._userName = name;
-    this._userInfo = info;
+    constructor(name, info) {
+      this._userName = name;
+      this._userInfo = info;
     }
 
-    getUserInfo() {
-         const info = {}
-           info.this._userName.value = namePopup.textContent;
-           info.this._userInfo.value = workPopup.textContent;
-      return info
+    getUserInfo(name, work) {
+      name.value = this._userName.textContent
+      work.value = this._userInfo.textContent
 
     }
 
-    setUserInfo() {
-        namePopup.textContent = this._userName.value;
-        workPopup.textContent = this._userInfo.value
+    setUserInfo(first, second) {
+      this._userName.textContent = first
+      this._userInfo.textContent = second
     }
 }

@@ -1,15 +1,12 @@
-
+const buttonEsc = 27;
 
 export default class Popup {
     constructor(popup) {
-        this._popup = popup;
+        this._popup = document.querySelector(popup);
     }
 
     open() {
-        console.log(this._popup)
         this._popup.classList.add('popup__open');
-        
-        console.log(this._popup)
         document.addEventListener('keydown', this._handleEscClose.bind(this))
         this.setEventListeners()
     }
@@ -21,11 +18,11 @@ export default class Popup {
 
     _handleEscClose(evt) {
         if (evt.keyCode === buttonEsc) {
-            closePopup(this._popup)
+            this.close()
         }
     }
 
     setEventListeners() {
-        this._popup.querySelector('.button-close').addEventListener('click', this.close())
+        this._popup.querySelector('.button-close').addEventListener('click', this.close.bind(this))
     }
 }
