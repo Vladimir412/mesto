@@ -20,7 +20,6 @@ export default class Card {
     this._setEventListener();
     const photo = this._element.querySelector('.element__photo');
     const title = this._element.querySelector('.element__title');
-    
     photo.src = this._photo;
     photo.alt = this._title;
     title.textContent = this._title;

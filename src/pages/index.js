@@ -136,4 +136,4 @@ editUserProfileButton.addEventListener('click', function () {
 // Слушатели
 plusBtn.addEventListener('click', openPopupAddCard);
 
-renderCard(initialCards)
+renderCard(initialCards);
