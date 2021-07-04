@@ -44,22 +44,22 @@ const workProfile = document.querySelector('.profile__subtitle');
 
 //---------------------------------------------------------------------------------------
 
-const popupOpenImage = (img, head) => {
-  const show = new PopupWithImage('.popup_image');
-          show.open(img, head);
-}
+const show = new PopupWithImage('.popup_image');
 
 //--------------------------------------------------------------------------------------
 
 const creatNewCard = (card) => {
-  return new Card(
-    card,
-    {handleCardClick: popupOpenImage},
+  return new Card({
+    data: card,
+    handleCardClick: () => {
+      const {photo, title} = card;
+      show.open(photo, title);
+    }},
     '#add-element'
   ).generateCard()
 }
 
-//----------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------     
 
 function renderCard(item) {
   const addArrCards = new Section({
@@ -81,8 +81,7 @@ function renderCard(item) {
       const {firstname, profession} = values
       infoForm.setUserInfo(firstname, profession)
     }
-  }
-  )
+  })
 
 //-----------------------------------------------------------------------------------------------------
 
@@ -103,10 +102,10 @@ const popupAddCardForm = new PopupWithForm({
 
 //-------------------------------------------------------------------------------
 
-const insertCard = (element) => {
+function insertCard(element) {
   const insert = new Section({
-    element,
-    renderer: element
+    items: null,
+    renderer: null
   },
   '.elements'
   )
@@ -121,22 +120,10 @@ const insertCard = (element) => {
   valid.enableValidation()
 }
 
-  // Добавление карточек
-  function addCard() {
-    popupAddCardForm
- 
-  }
-
 // Открытие добавление карточки
 function openPopupAddCard() {
   popupAddCardForm.open()
-  formCard.reset()
   renderForm(selectors, formCard);
-}
-
-// Добавление информации в profile
-function handleFormSubmit () {
-    popupEditForm
 }
 
 // Настройка редактора
@@ -148,9 +135,5 @@ editUserProfileButton.addEventListener('click', function () {
 
 // Слушатели
 plusBtn.addEventListener('click', openPopupAddCard);
-
-formProfile.addEventListener('submit', handleFormSubmit);
-
-formCard.addEventListener('submit', addCard)
 
 renderCard(initialCards)

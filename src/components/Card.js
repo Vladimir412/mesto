@@ -2,7 +2,7 @@
 
 
 export default class Card {
-  constructor(data, {handleCardClick}, selector) {
+  constructor({data, handleCardClick}, selector) {
     this._title = data.title;
     this._photo = data.photo;
     this._selector = selector;
@@ -30,7 +30,8 @@ export default class Card {
   
   // Удаление карточки
   _handleDeleteCard() {
-    this._element.closest('.element').remove();
+    this._element.remove();
+    this._element = null;
   }
 
   // Переключение лайка
