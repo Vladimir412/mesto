@@ -61,6 +61,7 @@ const creatNewCard = (card) => {
 
 //---------------------------------------------------------------------------------------------------     
 
+
 function renderCard(item) {
   const addArrCards = new Section({
     items: item,
@@ -131,6 +132,7 @@ editUserProfileButton.addEventListener('click', function () {
     popupEditForm.open();
     renderForm(selectors, formProfile);
     infoForm.getUserInfo(namePopup, workPopup);
+   
 });
 
 // Слушатели
