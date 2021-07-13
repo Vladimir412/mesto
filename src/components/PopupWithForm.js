@@ -17,11 +17,10 @@ export default class PopupWithForm extends Popup {
         return this._inputValues;
     }
 
-    //  С этой констпукцией все работает (не забыть разкоментировать свойство выше)
+  
     // listener() {
     //     this._submitForm(this._getInputValues())
     //     this.close()
-    //     this._form.reset()
     //     this._form.removeEventListener('submit', this._handler)
     // }
 
@@ -30,16 +29,13 @@ export default class PopupWithForm extends Popup {
     //     super.setEventListeners();
     // }
 
-
-    // с этой нет
     setEventListeners() {
-       console.log(this._popup)
         this._form.addEventListener('submit', (evt) => {
-            evt.preventDefault();
-            this._submitForm(this._getInputValues());
-            this.close();
-            console.log('set')
+          evt.preventDefault();
+          this._submitForm(this._getInputValues());
+          this.close();
         });
         super.setEventListeners();
-    }
+      }
+    
 }

@@ -4,21 +4,24 @@ export default class Popup {
     constructor(popup) {
         this._popup = document.querySelector(popup);
         this._handleEscClose = this._handleEscClose.bind(this);
-        this._handleOverlayClose = this._handleOverlayClose.bind(this)
+        this._handleOverlayClose = this._handleOverlayClose.bind(this);
+        this._form = this._popup.querySelector('.form');
     }
 
     open() {
         this._popup.classList.add('popup__open');
-        document.addEventListener('keydown', this._handleEscClose)
-        this._popup.addEventListener('mousedown', this._handleOverlayClose)
-        // Если убрать setEventListeners() то закрытие по клику на крестик не работает на просмотре картинки (прав ли ревьюер?)
-        this.setEventListeners()
+        document.addEventListener('keydown', this._handleEscClose);
+        this._popup.addEventListener('mousedown', this._handleOverlayClose);
     }
 
     close() {
         this._popup.classList.remove('popup__open');
-        document.removeEventListener('keydown', this._handleEscClose)
-        document.removeEventListener('mousedown', this._handleOverlayClose)
+        document.removeEventListener('keydown', this._handleEscClose);
+        document.removeEventListener('mousedown', this._handleOverlayClose);
+        // Если не сделать это условие то при закрытие просмотра карточки выподает ошибка в консоль
+        if (this._popup.contains(this._form)) {
+            this._form.reset();
+        }
     }
 
     _handleEscClose(evt) {
@@ -28,7 +31,7 @@ export default class Popup {
     }
 
     setEventListeners() {
-        // Если убрать bind то закрытие по клику на крестик вообще нигде не работает (прав ли ревьюер?)
+        // Если убрать bind то закрытие по клику на крестик вообще нигде не работает(теряется this._popup Поэтому нужна привязка контекста(или я не прав?))
         this._popup.querySelector('.button-close').addEventListener('click', this.close.bind(this))
     }
 

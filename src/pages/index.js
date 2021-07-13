@@ -40,14 +40,15 @@ const namePopup = document.querySelector('.form__input_name');
 const workPopup = document.querySelector('.form__input_work');
 const nameProfile = document.querySelector('.profile__title');
 const workProfile = document.querySelector('.profile__subtitle');
-
+const template = '#add-element';
+const placeForElements = '.elements';
 
 //---------------------------------------------------------------------------------------
-
+// Настройка клсса предпросмотра карточки
 const show = new PopupWithImage('.popup_image');
 
 //--------------------------------------------------------------------------------------
-
+// Создание новой карточки
 const creatNewCard = (card) => {
   return new Card({
     data: card,
@@ -55,27 +56,34 @@ const creatNewCard = (card) => {
       const {photo, title} = card;
       show.open(photo, title);
     }},
-    '#add-element'
+    template
   ).generateCard()
 }
 
 //---------------------------------------------------------------------------------------------------     
-
-
-function renderCard(item) {
-  const addArrCards = new Section({
-    items: item,
-    renderer: (item) => {
-      const card = creatNewCard(item)
-      const cardElement = card;
-      addArrCards.addItem(cardElement)
-    }
-  }, '.elements')
-  addArrCards.renderItems()
+// Функция рендера массива карточек
+function renderCard() {
+ placeNewCard.renderItems()
 }
 
-//---------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
+// Функция добавления новой карточки
+function insertCard(element) {
+  placeNewCard.addItem(element)
+}
 
+//----------------------------------------------------------------------------------
+// Настройка класса Section для отображения карточек
+const placeNewCard = new Section({
+  items: initialCards,
+  renderer: (data) => {
+    const card = creatNewCard(data)
+    placeNewCard.addItem(card)
+}}, placeForElements)
+  
+
+//---------------------------------------------------------------------------------------------------
+// Настройка формы редактирования профиля
   const popupEditForm = new PopupWithForm({
     popup: '.popup_profile',
     submitForm: (values) => {
@@ -85,7 +93,7 @@ function renderCard(item) {
   })
 
 //-----------------------------------------------------------------------------------------------------
-
+// Настройка формы добавлени карточки
 const popupAddCardForm = new PopupWithForm({
   popup: '.popup_card',
   submitForm: (data) => {
@@ -98,20 +106,8 @@ const popupAddCardForm = new PopupWithForm({
 })
 
 //----------------------------------------------------------------------------------
-
+// Настройка класса UserInfo
   const infoForm = new UserInfo(nameProfile, workProfile)
-
-//-------------------------------------------------------------------------------
-
-function insertCard(element) {
-  const insert = new Section({
-    items: null,
-    renderer: null
-  },
-  '.elements'
-  )
-  insert.addItem(element)
-}
 
 //------------------------------------------------------------------------------------
 
@@ -125,17 +121,20 @@ function insertCard(element) {
 function openPopupAddCard() {
   popupAddCardForm.open()
   renderForm(selectors, formCard);
+  popupAddCardForm.setEventListeners()
 }
 
 // Настройка редактора
 editUserProfileButton.addEventListener('click', function () {
-    popupEditForm.open();
+    popupEditForm.open()
     renderForm(selectors, formProfile);
-    infoForm.getUserInfo(namePopup, workPopup);
-   
+    const {firstname, profession} = infoForm.getUserInfo()
+    namePopup.value = firstname
+    workPopup.value = profession
+    popupEditForm.setEventListeners()
 });
 
 // Слушатели
 plusBtn.addEventListener('click', openPopupAddCard);
 
-renderCard(initialCards);
+renderCard()
