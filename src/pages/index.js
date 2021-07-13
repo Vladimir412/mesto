@@ -57,19 +57,19 @@ const creatNewCard = (card) => {
       show.open(photo, title);
     }},
     template
-  ).generateCard()
+  ).generateCard();
 }
 
 //---------------------------------------------------------------------------------------------------     
 // Функция рендера массива карточек
 function renderCard() {
- placeNewCard.renderItems()
+ placeNewCard.renderItems();
 }
 
 //-------------------------------------------------------------------------------
 // Функция добавления новой карточки
 function insertCard(element) {
-  placeNewCard.addItem(element)
+  placeNewCard.addItem(element);
 }
 
 //----------------------------------------------------------------------------------
@@ -77,9 +77,9 @@ function insertCard(element) {
 const placeNewCard = new Section({
   items: initialCards,
   renderer: (data) => {
-    const card = creatNewCard(data)
-    placeNewCard.addItem(card)
-}}, placeForElements)
+    const card = creatNewCard(data);
+    placeNewCard.addItem(card);
+}}, placeForElements);
   
 
 //---------------------------------------------------------------------------------------------------
@@ -87,8 +87,8 @@ const placeNewCard = new Section({
   const popupEditForm = new PopupWithForm({
     popup: '.popup_profile',
     submitForm: (values) => {
-      const {firstname, profession} = values
-      infoForm.setUserInfo(firstname, profession)
+      const {firstname, profession} = values;
+      infoForm.setUserInfo(firstname, profession);
     }
   })
 
@@ -99,42 +99,44 @@ const popupAddCardForm = new PopupWithForm({
   submitForm: (data) => {
     const {title, address} = data;
     const newCard = {};
-    newCard.title = title
-    newCard.photo = address
-    insertCard(creatNewCard(newCard))
+    newCard.title = title;
+    newCard.photo = address;
+    insertCard(creatNewCard(newCard));
   }
 })
 
 //----------------------------------------------------------------------------------
 // Настройка класса UserInfo
-  const infoForm = new UserInfo(nameProfile, workProfile)
+  const infoForm = new UserInfo(nameProfile, workProfile);
 
 //------------------------------------------------------------------------------------
 
  // Валидация форм
  function renderForm(selector, form) {
-  const valid = new FormValidator(selector, form)
-  valid.enableValidation()
+  const valid = new FormValidator(selector, form);
+  valid.enableValidation();
 }
 
 // Открытие добавление карточки
 function openPopupAddCard() {
-  popupAddCardForm.open()
+  popupAddCardForm.open();
   renderForm(selectors, formCard);
-  popupAddCardForm.setEventListeners()
 }
 
 // Настройка редактора
 editUserProfileButton.addEventListener('click', function () {
-    popupEditForm.open()
+    popupEditForm.open();
     renderForm(selectors, formProfile);
-    const {firstname, profession} = infoForm.getUserInfo()
-    namePopup.value = firstname
-    workPopup.value = profession
-    popupEditForm.setEventListeners()
+    const {firstname, profession} = infoForm.getUserInfo();
+    namePopup.value = firstname;
+    workPopup.value = profession;
+
 });
 
 // Слушатели
 plusBtn.addEventListener('click', openPopupAddCard);
 
+popupAddCardForm.setEventListeners();
+popupEditForm.setEventListeners();
+show.setEventListeners()
 renderCard()

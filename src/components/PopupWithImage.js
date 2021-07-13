@@ -16,6 +16,5 @@ export default class PopupWithImage extends Popup {
       titlePopup.textContent = title;
 
       super.open();
-      super.setEventListeners();
     }
 }
