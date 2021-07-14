@@ -18,10 +18,6 @@ export default class Popup {
         this._popup.classList.remove('popup__open');
         document.removeEventListener('keydown', this._handleEscClose);
         document.removeEventListener('mousedown', this._handleOverlayClose);
-        // Если не сделать это условие то при закрытие просмотра карточки выподает ошибка в консоль
-        if (this._popup.contains(this._form)) {
-            this._form.reset();
-        }
     }
 
     _handleEscClose(evt) {
@@ -31,8 +27,7 @@ export default class Popup {
     }
 
     setEventListeners() {
-        // Если убрать bind то закрытие по клику на крестик вообще нигде не работает(теряется this._popup Поэтому нужна привязка контекста(или я не прав?))
-        this._popup.querySelector('.button-close').addEventListener('click', this.close.bind(this))
+        this._popup.querySelector('.button-close').addEventListener('click', () => this.close())
     }
 
     _handleOverlayClose(evt) {
