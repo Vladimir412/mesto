@@ -197,7 +197,7 @@ const popupDeleteConfirm = new PopupWithConfirm({popup: '.popup_confirm'})
 //------------------------------------------------------------------------------------
 
 function isLoading(form, load) {
-  const saveButton = form.querySelector('.form__button_save');
+  const saveButton = form.querySelector('.form__button-save');
   const savingButton = form.querySelector('.form__button_saving');
   if (load) {
     saveButton.classList.add('form__button_hidden');
