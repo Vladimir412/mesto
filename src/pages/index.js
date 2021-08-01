@@ -11,7 +11,7 @@ import PopupWithConfirm from '../components/PopupWithConfirm.js';
 const editUserProfileButton = document.querySelector('.button-edit');
 const formProfile = document.querySelector('.form_profile');
 const formCard = document.querySelector('.form_card');
-const formAvatar = document.querySelector('.form__avatar')
+const formAvatar = document.querySelector('.form_avatar')
 const plusBtn = document.querySelector('.button-plus');
 const namePopup = document.querySelector('.form__input_name');
 const workPopup = document.querySelector('.form__input_work');
@@ -168,7 +168,6 @@ const popupAddCardForm = new PopupWithForm({
 const popupEditAvatar = new PopupWithForm({
   popup: '.popup_refresh-avatar',
   submitForm: (value) => {
-    console.log(popupEditAvatar.popup)
     isLoading(formAvatar, true)
     api.editAvatar(value)
     .then((res) => {
@@ -201,14 +200,10 @@ function isLoading(form, load) {
   const savingButton = form.querySelector('.form__button-saving');
   if (load) {
     saveButton.classList.add('form__button-hidden');
-    savingButton.classList.remove('form__button-hidden')
-    console.log(saveButton)
-    console.log(savingButton)
+    savingButton.classList.remove('form__button-hidden');
   } else {
     saveButton.classList.remove('form__button-hidden');
-    savingButton.classList.add('form__button-hidden')
-    console.log(saveButton)
-    console.log(savingButton)
+    savingButton.classList.add('form__button-hidden');
   }
 }
 
