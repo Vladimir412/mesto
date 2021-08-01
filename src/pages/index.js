@@ -198,15 +198,15 @@ const popupDeleteConfirm = new PopupWithConfirm({popup: '.popup_confirm'})
 
 function isLoading(form, load) {
   const saveButton = form.querySelector('.form__button-save');
-  const savingButton = form.querySelector('.form__button_saving');
+  const savingButton = form.querySelector('.form__button-saving');
   if (load) {
-    saveButton.classList.add('form__button_hidden');
-    savingButton.classList.remove('form__button_hidden')
+    saveButton.classList.add('form__button-hidden');
+    savingButton.classList.remove('form__button-hidden')
     console.log(saveButton)
     console.log(savingButton)
   } else {
-    saveButton.classList.remove('form__button_hidden');
-    savingButton.classList.add('form__button_hidden')
+    saveButton.classList.remove('form__button-hidden');
+    savingButton.classList.add('form__button-hidden')
     console.log(saveButton)
     console.log(savingButton)
   }

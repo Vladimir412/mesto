@@ -29,8 +29,8 @@
 @import URL(../blocks/form/__input/_type/form__input_type_error.css);
 @import url(../blocks/form/__button/_disabled/form__button_disabled.css);
 @import url(../blocks/form/__button-save/form__button-save.css);
-@import url(../blocks/form/__button/_saving/form__button_saving.css);
-@import url(../blocks/form/__button/_hidden/form__button_hidden.css);
+@import url(../blocks/form/__button-saving/form__button-saving.css);
+@import url(../blocks/form/__button-hidden/form__button-hidden.css);
 @import url(../blocks/form/__inpur-error/form__input-error.css);
 @import url(../blocks/form/__inpur-error/_active/form__input-error_active.css);
 
