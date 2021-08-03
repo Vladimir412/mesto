@@ -70,16 +70,6 @@ export default class Api {
         .then(this._checkResponse)
     }
 
-    // getAvatar() {
-    //     return fetch(`${this._url}/v1/${this._userId}/users/me`, {
-    //         headers: {
-    //             authorization: this._token,
-    //             'Content-Type': 'application/json'
-    //         }
-    //     })
-    //     .then(this._checkResponse)
-    // }
-
     updateLikes(liked, id) {
         return fetch(`${this._url}/v1/${this._userId}/cards/likes/${id}`, {
             method: liked ? 'DELETE' : 'PUT',
