@@ -25,7 +25,7 @@ function checkError(err) {
   Promise.all([api.getInfoAboutUser(), api.getInitialCards()])
   .then(([dataUser, dataCards]) => {
       const {name, about, avatar, _id} = dataUser;
-      infoForm.setUserInfo(name, about, avatar, _id);
+      infoForm.setUserInfo(name, about, avatar);
       userId = _id
       placeNewCard.renderItems(dataCards);
   })
