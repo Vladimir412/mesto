@@ -5,6 +5,7 @@
     border: 0;
     padding: 0;
     background-color: black;
+    align-self: center;
 }
 
 .button-avatar:hover {

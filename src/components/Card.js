@@ -10,9 +10,9 @@ export default class Card {
     this._handleCardClick = handleCardClick;
     this._handleLikeClick = handleLikeClick;
     this._handleCardDelete = handleCardDelete;
-    this._cardId = data._id;
+    this.cardId = data._id;
     this._ownerId = data.owner._id;
-    this._liked = liked;
+    this.liked = liked;
     this._counterLikes = data.likes;
     this._myId = myId;
   }
@@ -46,7 +46,7 @@ export default class Card {
 
 
   refreshLikesStatus(){
-    if (this._liked){
+    if (this.liked){
       this._element.querySelector('.element__like').classList.add('element__like_active');
     }else{
       this._element.querySelector('.element__like').classList.remove('element__like_active');
@@ -56,7 +56,7 @@ export default class Card {
   }
 
   setLikes(likes, liked) {
-    this._liked = liked;
+    this.liked = liked;
     this._counterLikes = likes;
     this.refreshLikesStatus();
   }

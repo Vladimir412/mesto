@@ -5,6 +5,7 @@ export default class UserInfo {
       this._userName = name;
       this._userInfo = info;
       this._avatar = avatar;
+      this._id = null
     }
 
     getUserInfo() {
@@ -14,17 +15,19 @@ export default class UserInfo {
       }
     }
 
-    refreshUserInfo(user, about) {
+    setUserInfo(user, about, avatar, id) {
       this._userName.textContent = user
       this._userInfo.textContent = about
+      this._avatar.src = avatar;
+      this._id = id
     }
 
-    setUserInfo(data) {
-      data.name = this._userName.textContent;
-      data.about = this._userInfo.textContent
+    refreshUserInfo(user, about) {
+      this._userName.textContent = user;
+      this._userInfo.textContent = about;
     }
 
-    getUserAvatar(data) {
+    refreshUserAvatar(data) {
       this._avatar.src = data
     }
 }

@@ -7,20 +7,9 @@ import {FormValidator, selectors} from '../components/FormValidator.js';
 import UserInfo from '../components/UserInfo';
 import Api from '../components/Api.js';
 import PopupWithConfirm from '../components/PopupWithConfirm.js';
+import {editUserProfileButton, formProfile, formCard, formAvatar, plusBtn, namePopup, workPopup, nameProfile, workProfile, avatarProfile, template, placeForElements, avatarButton} from '../utils/constants.js'
 
-const editUserProfileButton = document.querySelector('.button-edit');
-const formProfile = document.querySelector('.form_profile');
-const formCard = document.querySelector('.form_card');
-const formAvatar = document.querySelector('.form_avatar')
-const plusBtn = document.querySelector('.button-plus');
-const namePopup = document.querySelector('.form__input_name');
-const workPopup = document.querySelector('.form__input_work');
-const nameProfile = document.querySelector('.profile__title');
-const workProfile = document.querySelector('.profile__subtitle');
-const avatarProfile = document.querySelector('.profile__avatar');
-const template = '#add-element';
-const placeForElements = '.elements';
-const avatarButton = document.querySelector('.button-avatar')
+let userId = null;
 
 
 const api = new Api({
@@ -29,42 +18,25 @@ const api = new Api({
   userId: 'cohort-26'
 })
 
+function checkError(err) {
+  console.log(err)
+}
 
-
-// Получение карточек с сервера
-api.getInitialCards()
-  .then((arr) => {
-    placeNewCard.renderItems(arr);
+  Promise.all([api.getInfoAboutUser(), api.getInitialCards()])
+  .then(([dataUser, dataCards]) => {
+      const {name, about, avatar, _id} = dataUser;
+      infoForm.setUserInfo(name, about, avatar, _id);
+      userId = _id
+      placeNewCard.renderItems(dataCards);
   })
-
-
-  //Вынести в отделную функцию(еще используется в форме настройке профиля)
-
-api.getInfoAboutUser()
-  .then(res => {
-    const {name, about} = res;
-    infoForm.refreshUserInfo(name, about);
-  })
-  .catch((err) => {
-    console.log(err);
-  })
-
-api.getAvatar()
-.then((res) => {
-  const {avatar} = res
-  infoForm.getUserAvatar(avatar);
-})
-.catch(err => console.log(err))
-
+  .catch(checkError)
 
 //---------------------------------------------------------------------------------------
 // Настройка клсса предпросмотра карточки
 const show = new PopupWithImage('.popup_image');
 
-const myId='d6a0b80b0c8977924ae3610f';
-
 function isLike(likes) {
-  if (likes.find(item => item._id === myId)) {
+  if (likes.find(item => item._id === userId)) {
     return true
   } else {
     return false
@@ -75,28 +47,29 @@ function isLike(likes) {
 // Создание новой карточки
 const creatNewCard = (cardData) => {
   const liked = isLike(cardData.likes);
-  const card= new Card({
+  const card = new Card({
     data: cardData,
-    myId: 'd6a0b80b0c8977924ae3610f',
+    myId: userId,
     handleCardClick: () => {
       const {link, name} = cardData;
       show.open(link, name);
     },
     handleLikeClick: (cardInstance) => {
-      api.updateLikes(cardInstance._liked, cardInstance._cardId)
+      api.updateLikes(cardInstance.liked, cardInstance.cardId)
       .then((data) => {
         cardInstance.setLikes(data.likes,isLike(data.likes))
-
       })
+      .catch(checkError)
     },
     handleCardDelete: (cardInstance) => {
       popupDeleteConfirm.open()
       popupDeleteConfirm.handleFormSubmit(() => {
-        api.deleteCard(cardInstance._cardId)
+        api.deleteCard(cardInstance.cardId)
         .then(() => {
           cardInstance.handleDeleteCard()
           popupDeleteConfirm.close()
         })
+        .catch(checkError)
       })
     }
     },
@@ -113,7 +86,6 @@ const placeNewCard = new Section({
     placeNewCard.addItem(card);
 }}, placeForElements);
 
-
 //---------------------------------------------------------------------------------------------------
 // Настройка формы редактирования профиля
 const popupEditForm = new PopupWithForm({
@@ -121,24 +93,17 @@ const popupEditForm = new PopupWithForm({
   submitForm: (values) => {
     isLoading(formProfile, true)
     api.editUserProfile(values)
-    .then((res) => {
-      return res.ok ? res.json() : Promise.reject(res.status)
-    })
     .then((data) => {
       const {name, about} = data
       infoForm.refreshUserInfo(name, about)
+      popupEditForm.close()
     })
-    .catch(err => {
-      console.log(`Ошибка: ${err}`)
-    })
+    .catch(checkError)
     .finally(() => {
       isLoading(formProfile, false);
-      popupEditForm.close()
     })
   }
 })
-
-
 
 //-----------------------------------------------------------------------------------------------------
 // Настройка формы добавлени карточки
@@ -147,19 +112,14 @@ const popupAddCardForm = new PopupWithForm({
   submitForm: (data) => {
     isLoading(formCard, true)
     api.sentNewCard(data)
-    .then((res) => {
-      return res.json()
-    })
     .then((data) => {
       const newCard = creatNewCard(data)
       placeNewCard.addItem(newCard)
+      popupAddCardForm.close()
     })
-    .catch(err => {
-      console.log(`Ошибка: ${err}`)
-    })
+    .catch(checkError)
     .finally(() => {
       isLoading(formCard, false)
-      popupAddCardForm.close()
     })
   }
 })
@@ -170,19 +130,14 @@ const popupEditAvatar = new PopupWithForm({
   submitForm: (value) => {
     isLoading(formAvatar, true)
     api.editAvatar(value)
-    .then((res) => {
-      return res.ok ? res.json() : Promise.reject(res.status);
-    })
     .then((data) => {
       const {avatar} = data
-      infoForm.getUserAvatar(avatar)
+      infoForm.refreshUserAvatar(avatar)
+      popupEditAvatar.close()
     })
-    .catch((err) => {
-      console.log(`Ошибка: ${err}`)
-    })
+    .catch(checkError)
     .finally(() => {
       isLoading(formAvatar, false)
-      popupEditAvatar.close()
     })
   }
 })
@@ -195,40 +150,32 @@ const popupDeleteConfirm = new PopupWithConfirm({popup: '.popup_confirm'})
 
 //------------------------------------------------------------------------------------
 
-function isLoading(form, load) {
-  const saveButton = form.querySelector('.form__button-save');
-  const savingButton = form.querySelector('.form__button-saving');
-  if (load) {
-    saveButton.classList.add('form__button-hidden');
-    savingButton.classList.remove('form__button-hidden');
-  } else {
-    saveButton.classList.remove('form__button-hidden');
-    savingButton.classList.add('form__button-hidden');
-  }
-}
+const validFormProfile = new FormValidator(selectors, formProfile)
+const validFormAddCard = new FormValidator(selectors, formCard)
+const validFormAvatar = new FormValidator(selectors, formAvatar)
 
- // Валидация форм
-function renderForm(selector, form) {
-  const valid = new FormValidator(selector, form);
-  valid.enableValidation();
+function isLoading(form, load) {
+  const formButton = form.querySelector('.form__button')
+  if (load) {
+    formButton.textContent = 'Сохранение...'
+  } else {
+    formButton.textContent = 'Сохранить'
+  }
 }
 
 // Открытие редактора аватара
 function openEditAvatar() {
   popupEditAvatar.open()
-  renderForm(selectors, formAvatar)
 }
 
 // Открытие добавление карточки
 function openPopupAddCard() {
   popupAddCardForm.open();
-  renderForm(selectors, formCard);
 }
 
 // Настройка редактора
 editUserProfileButton.addEventListener('click', function () {
     popupEditForm.open();
-    renderForm(selectors, formProfile);
     const {firstname, profession} = infoForm.getUserInfo();
     namePopup.value = firstname;
     workPopup.value = profession;
@@ -239,7 +186,9 @@ editUserProfileButton.addEventListener('click', function () {
 plusBtn.addEventListener('click', openPopupAddCard);
 avatarButton.addEventListener('click', openEditAvatar)
 
-
+validFormProfile.enableValidation()
+validFormAddCard.enableValidation()
+validFormAvatar.enableValidation()
 popupEditAvatar.setEventListeners()
 popupAddCardForm.setEventListeners();
 show.setEventListeners()

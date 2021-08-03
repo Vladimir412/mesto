@@ -10,28 +10,19 @@ export default class Api {
     getInitialCards() {
         return fetch(`${this._url}/v1/${this._userId}/cards`, {
             headers: {
-                authorization: this._token,
-                // 'Content-Type': 'application/json'
+                authorization: this._token
                 }
             })
-            .then((res) => {
-                return res.ok ? res.json() : Promise.reject(res.status)
-            })
-            .catch((err) => {
-              console.log(`Ошибка: ${err}`)
-            })
+            .then(this._checkResponse)
     }
 
     getInfoAboutUser() {
         return fetch(`${this._url}/v1/${this._userId}/users/me`, {
             headers: {
-                authorization: this._token,
-                // 'Content-Type': 'application/json'
+                authorization: this._token
                 }
         })
-        .then((res) => {
-            return res.ok ? res.json() : Promise.reject(res.status)
-        })
+        .then(this._checkResponse)
     }
 
     editUserProfile(data) {
@@ -46,6 +37,7 @@ export default class Api {
                 about: data.profession
             })
         })
+        .then(this._checkResponse)
 
     }
 
@@ -61,6 +53,7 @@ export default class Api {
                 link: data.address
             })
         })
+        .then(this._checkResponse)
     }
 
     editAvatar(data) {
@@ -74,19 +67,18 @@ export default class Api {
                 avatar: data.avatar
             })
         })
+        .then(this._checkResponse)
     }
 
-    getAvatar() {
-        return fetch(`${this._url}/v1/${this._userId}/users/me`, {
-            headers: {
-                authorization: this._token,
-                'Content-Type': 'application/json'
-            }
-        })
-        .then((res) => {
-            return res.ok ? res.json() : Promise.reject(res.status)
-        })
-    }
+    // getAvatar() {
+    //     return fetch(`${this._url}/v1/${this._userId}/users/me`, {
+    //         headers: {
+    //             authorization: this._token,
+    //             'Content-Type': 'application/json'
+    //         }
+    //     })
+    //     .then(this._checkResponse)
+    // }
 
     updateLikes(liked, id) {
         return fetch(`${this._url}/v1/${this._userId}/cards/likes/${id}`, {
@@ -99,10 +91,7 @@ export default class Api {
                 _id: id
             })
         })
-        .then((res) => {
-            return res.ok ? res.json() : Promise.reject(res.status)
-        })
-        .catch(err => console.log(err))
+        .then(this._checkResponse)
     }
 
     deleteCard(data) {
@@ -112,6 +101,10 @@ export default class Api {
           authorization: this._token
         }
       })
-      .then(res => {res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)})
+      .then(this._checkResponse)
+    }
+
+    _checkResponse(res) {
+        return res.ok? res.json() : Promise.reject(`Ошибка: ${res}`)
     }
 }

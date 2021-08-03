@@ -45,13 +45,19 @@ class FormValidator {
     const inputList = Array.from(this._form.querySelectorAll(this._selector.inputSelector));
     const buttonElement = this._form.querySelector(this._selector.submitButtonSelector);
     this._toggleButtonState(inputList, buttonElement);
-    inputList.forEach((inputElement) => {
-        this._hidenInputError(inputElement)
-        inputElement.addEventListener('input', () => {
-            this._checkInputValidity(inputElement);
-            this._toggleButtonState(inputList, buttonElement);
+    this._form.addEventListener('reset', () => {
+        this._disabledButton(buttonElement);
+        inputList.forEach(inputElement => {
+            this._hidenInputError(inputElement)
         })
     })
+        inputList.forEach((inputElement) => {
+          this._hidenInputError(inputElement)
+          inputElement.addEventListener('input', () => {
+            this._checkInputValidity(inputElement);
+            this._toggleButtonState(inputList, buttonElement);
+          })
+        })
 }
 
 // Проверяет каждое поле на наличие ошибки
