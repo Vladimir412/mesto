@@ -18,4 +18,4 @@
 
 9. Реализованно ООП для валидации форм и создания карточек
 
-[Проект]( https://vladimir412/githib.io/mesto )
+[Проект]( https://vladimir412.githib.io/mesto )
