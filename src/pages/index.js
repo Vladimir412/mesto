@@ -5,7 +5,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import {FormValidator, selectors} from '../components/FormValidator.js';
 import UserInfo from '../components/UserInfo';
-import Api from '../components/Api.js';
+import Api from '../utils/Api.js';
 import PopupWithConfirm from '../components/PopupWithConfirm.js';
 import {editUserProfileButton, formProfile, formCard, formAvatar, plusBtn, namePopup, workPopup, nameProfile, workProfile, avatarProfile, template, placeForElements, avatarButton} from '../utils/constants.js'
 

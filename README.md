@@ -16,4 +16,3 @@
 ## Посмотреть проект
 
   * Перейдите по ссылке на ветку gh-page, и там Вы сможете его посмотреть [gh-page]( https://github.com/Vladimir412/mesto/tree/gh-pages ).
-
